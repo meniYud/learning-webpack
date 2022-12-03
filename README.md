@@ -27,4 +27,15 @@ in order to allow sass, we will add style loader to webpack <code>yarn add -D sa
 
 in order to import png (svg) files we need to:
 1. create declarations.d.ts file and declare module '*.png' ('*.svg') (so typescript will be able to find type declaration for png imports)
-2. add the requiered instructions to webpack to know how to address png (svg) files (since webpack 5 no loader is required)
+2. add the required instructions to webpack to know how to address png (svg) files (since webpack 5 no loader is required)
+
+to enable multiple environments we need webpack to separate between the "dev" and the "prod" bundling processes. but in the same time, we dont want to write all the config twice. so we will reuse webpack config between configuration files:
+1. <code>yarn add -D webpack-merge</code>
+2. create webpack config file for each environment, with its "special" configs (webpack.dev.js, webpack.prod.js etc)
+3. create one common file with all the common config (webpack.common.js)
+4. create main config file (webpack.config.js) to which your package.json points as the config file, and in which you:
+   1.  catch the env variables sent by the package.json command
+   2.  load the correct webpack config file spesific for that env
+   3.  merge with the common config file
+   4.  return webpack conig objecvt consist of the common configs merged with the env-spesific configs
+5.  lastly, separate the dev start process from the prod build process.
