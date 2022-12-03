@@ -39,3 +39,16 @@ to enable multiple environments we need webpack to separate between the "dev" an
    3.  merge with the common config file
    4.  return webpack conig objecvt consist of the common configs merged with the env-spesific configs
 5.  lastly, separate the dev start process from the prod build process.
+
+Adding code linters and formatters:
+1. First we add the core package: <code>yarm add -D eslint</code>
+2. Then we add react spesific plugins: <code>eslint-plugin-react eslint-plugin-react-hooks</code>
+3. and then typescript plugins: <code>@typescript-eslint/parser @typescript-eslint/eslint-plugin</code>
+4. Then we need to configure the lint rules:
+   1. in eslintrc.js reference the plugins, and you can use their "recomended" set of rules (in the extend section).
+   2. in the "rules" section, you can add any rules from the set of rules defined by aslint. (you may use "known" sets of rules such as airbnb etc)
+5. to add prettier, <code>yarn add -D prettier</code>
+6. to disable confilcting eslint rules <code>yarn add -D eslint-config-prettier</code>
+7. to rue prettier as eslint rule <code> yarn add -D eslint-plugin-prettier</code>
+8. then create .prettierrc.js with your rules
+9. lastly, add the extensions in eslint to run prettier, and the package.json command
