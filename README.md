@@ -52,3 +52,6 @@ Adding code linters and formatters:
 7. to rue prettier as eslint rule <code> yarn add -D eslint-plugin-prettier</code>
 8. then create .prettierrc.js with your rules
 9. lastly, add the extensions in eslint to run prettier, and the package.json command
+10. Optional: adding husky to enforce lint rules:
+    1.  <code>yarn add -D husky@4 lint-staged</code>
+    2.  add enforcement for lint and prettier as pre-commit
